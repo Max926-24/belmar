@@ -82,14 +82,12 @@ public class Material {
         if (this == o) {
             return true;
         }
-        if(!(o instanceof Material material))
+        if (!(o instanceof Material material))
             return false;
 
         return id != null && Objects.equals(id, material.id);
 
     }
-
-
 
     @Override
     public int hashCode() {
