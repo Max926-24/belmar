@@ -3,8 +3,6 @@ package de.ait.belmar.domain;
 import de.ait.belmar.domain.enums.MaterialType;
 import de.ait.belmar.domain.enums.Unit;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -17,21 +15,18 @@ public class Material {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    @NotBlank
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "type")
-    @NotNull
+    @Column(name = "type", nullable = false)
     @Enumerated(EnumType.STRING)
     private MaterialType type;
 
-    @Column(name = "unit")
-    @NotNull
+    @Column(name = "unit", nullable = false)
     @Enumerated(EnumType.STRING)
     private Unit unit;
 
-    @Column(name = "active")
+    @Column(name = "active", nullable = false)
     private boolean active;
 
     public Material() {
