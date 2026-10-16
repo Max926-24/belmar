@@ -30,5 +30,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(DuplicateEntityException.class)
+    public ResponseEntity<String> handleException(DuplicateEntityException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+
 
 }

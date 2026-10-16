@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
                         .requestMatchers("/error").permitAll()
                         .requestMatchers(HttpMethod.POST, "/materials").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/suppliers").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(x -> x.authenticationEntryPoint(
