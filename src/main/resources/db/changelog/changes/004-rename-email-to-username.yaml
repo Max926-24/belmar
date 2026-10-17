@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-rename-email-to-username
+      author: maxim
+      changes:
+        - renameColumn:
+            tableName: account
+            oldColumnName: email
+            newColumnName: username
+            columnDataType: VARCHAR(255)

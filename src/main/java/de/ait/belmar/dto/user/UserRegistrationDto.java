@@ -1,30 +1,30 @@
 package de.ait.belmar.dto.user;
 
-import jakarta.validation.constraints.Email;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class UserRegistrationDto {
 
 
-    @NotBlank
-    @Email
-    private String email;
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    private String username;
 
 
     @NotBlank
-    @Size(min = 6,max = 100)
+    @Size(min = 6, max = 100)
     private String password;
 
     @NotBlank
     private String name;
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -45,6 +45,6 @@ public class UserRegistrationDto {
 
     @Override
     public String toString() {
-        return String.format("User Registration Dto : email=%s, name =%s", email, name);
+        return String.format("User Registration Dto : username=%s, name =%s", username, name);
     }
 }

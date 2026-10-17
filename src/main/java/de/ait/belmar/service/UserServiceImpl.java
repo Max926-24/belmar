@@ -24,13 +24,13 @@ public  class UserServiceImpl implements UserService {
     @Override
     public void register(UserRegistrationDto registrationDto) {
 
-        if (repository.existsByEmail(registrationDto.getEmail())) {
-            throw new RegistrationException("User with email " +
-                    registrationDto.getEmail() + " already exists");
+        if (repository.existsByUsername(registrationDto.getUsername())) {
+            throw new RegistrationException("User with username " +
+                    registrationDto.getUsername() + " already exists");
         }
 
         User user = new User();
-        user.setEmail(registrationDto.getEmail());
+        user.setUsername(registrationDto.getUsername());
         user.setName(registrationDto.getName());
 
         String encodedPassword = passwordEncoder.encode(registrationDto.getPassword());

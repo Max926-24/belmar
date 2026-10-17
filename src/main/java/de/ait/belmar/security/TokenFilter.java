@@ -37,14 +37,14 @@ public class TokenFilter extends OncePerRequestFilter {
             String token = header.substring(7);
 
             if (tokenService.validateToken(token)) {
-                String email = tokenService.getEmailFromToken(token);
+                String username = tokenService.getUsernameFromToken(token);
 
-                userRepository.findByEmail(email).ifPresent(user -> {
+                userRepository.findByUsername(username).ifPresent(user -> {
                     var authority =
                             new SimpleGrantedAuthority(user.getRole().name());
                     var authentication =
                             new UsernamePasswordAuthenticationToken(
-                                    user.getEmail(), null, List.of(authority));
+                                    user.getUsername(), null, List.of(authority));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
 
 

@@ -23,11 +23,11 @@ public class TokenService {
         this.expirationMillis = expirationMinutes * 60 * 1000;
     }
 
-    public String generateToken(String email) {
+    public String generateToken(String username) {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + expirationMillis);
         return Jwts.builder()
-                .subject(email)
+                .subject(username)
                 .issuedAt(now)
                 .expiration(expiration)
                 .signWith(key)
@@ -43,7 +43,7 @@ public class TokenService {
         }
     }
 
-    public String getEmailFromToken(String token) {
+    public String getUsernameFromToken(String token) {
         return Jwts.parser()
                 .verifyWith(key)
                 .build()

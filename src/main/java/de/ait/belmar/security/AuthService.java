@@ -26,13 +26,13 @@ public class AuthService {
 
     public TokenResponseDto login(LoginRequestDto loginDto) {
 
-        User user = userRepository.findByEmail(loginDto.getEmail())
-                .orElseThrow(() -> new AuthenticationException("Invalid email or password"));
+        User user = userRepository.findByUsername(loginDto.getUsername())
+                .orElseThrow(() -> new AuthenticationException("Invalid username or password"));
         if (!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
-            throw new AuthenticationException("Invalid email or password");
+            throw new AuthenticationException("Invalid username or password");
 
         }
-        String token = tokenService.generateToken(user.getEmail());
+        String token = tokenService.generateToken(user.getUsername());
         return new TokenResponseDto(token);
 
     }
