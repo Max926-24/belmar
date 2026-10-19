@@ -30,8 +30,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(x -> x
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
                         .requestMatchers("/error").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/materials").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/suppliers").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/materials").hasRole("DIRECTOR")
+                        .requestMatchers(HttpMethod.POST,"/suppliers").hasRole("DIRECTOR")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(x -> x.authenticationEntryPoint(

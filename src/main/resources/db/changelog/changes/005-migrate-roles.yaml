@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-migrate-roles
+      author: maxim
+      changes:
+        - update:
+            tableName: account
+            columns:
+              - column:
+                  name: role
+                  value: ROLE_SYSADMIN
+            where: role = 'ROLE_ADMIN'
+        - update:
+            tableName: account
+            columns:
+              - column:
+                  name: role
+                  value: ROLE_STOREKEEPER
+            where: role = 'ROLE_USER'
