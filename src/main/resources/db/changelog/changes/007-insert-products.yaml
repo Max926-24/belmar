@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-insert-products
+      author: maxim
+      changes:
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: Провансаль
+              - column:
+                  name: packaging
+                  value: BUCKET
+              - column:
+                  name: net_weight
+                  valueNumeric: 1.000
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: Провансаль
+              - column:
+                  name: packaging
+                  value: GLASS_JAR
+              - column:
+                  name: net_weight
+                  valueNumeric: 0.720
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: Провансаль
+              - column:
+                  name: packaging
+                  value: DOYPACK
+              - column:
+                  name: net_weight
+                  valueNumeric: 0.500
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: Провансаль
+              - column:
+                  name: packaging
+                  value: DOYPACK
+              - column:
+                  name: net_weight
+                  valueNumeric: 0.200

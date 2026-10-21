@@ -30,9 +30,14 @@ public class SecurityConfig {
                 .authorizeHttpRequests(x -> x
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
                         .requestMatchers("/error").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/materials").hasRole("DIRECTOR")
-                        .requestMatchers(HttpMethod.POST,"/suppliers").hasRole("DIRECTOR")
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "/materials","/suppliers", "/products").hasRole("DIRECTOR")
+                        .requestMatchers(HttpMethod.POST, "/production-receipts").hasRole("STOREKEEPER")
+                        .anyRequest().hasAnyRole(
+                                        "DIRECTOR","MANAGER",
+                                "CHIEF_ACCOUNTANT","ACCOUNTANT",
+                                "SALES_REP","TECHNOLOGIST","STOREKEEPER")
+
+
                 )
                 .exceptionHandling(x -> x.authenticationEntryPoint(
                         new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))

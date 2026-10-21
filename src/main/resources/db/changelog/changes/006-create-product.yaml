@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-create-product
+      author: maxim
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: packaging
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: net_weight
+                  type: DECIMAL(8,3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: active
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: product
+            columnNames: name, packaging, net_weight
+            constraintName: uq_product_name_packaging_weight

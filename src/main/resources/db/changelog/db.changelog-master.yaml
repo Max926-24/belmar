@@ -15,3 +15,18 @@ databaseChangeLog:
 
   - include:
       file: db/changelog/changes/005-migrate-roles.yaml
+
+  - include:
+      file: db/changelog/changes/006-create-product.yaml
+
+  - include:
+      file: db/changelog/changes/007-insert-products.yaml
+
+  - include:
+      file: db/changelog/changes/008-create-production-receipt.yaml
+
+
+
+
+
+

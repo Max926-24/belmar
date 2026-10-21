@@ -33,6 +33,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DuplicateEntityException.class)
     public ResponseEntity<String> handleException(DuplicateEntityException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handleException(EntityNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 
